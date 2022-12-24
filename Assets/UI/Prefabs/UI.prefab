@@ -137,7 +137,19 @@ MonoBehaviour:
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 820536126}
+        m_TargetAssemblyTypeName: DownloadOption, Assembly-CSharp
+        m_MethodName: DropdownChoic
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!1 &2002047289368302431
 GameObject:
@@ -643,6 +655,7 @@ GameObject:
   - component: {fileID: 2002047290282317807}
   - component: {fileID: 2002047290282317800}
   - component: {fileID: 2002047290282317801}
+  - component: {fileID: 820536126}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -732,6 +745,19 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &820536126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2002047290282317802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2522d7a8c6094f0478de8ca74c1e24ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bootSelection: {fileID: 2002047289344266500}
 --- !u!1 &2002047290336941073
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,13 +2,15 @@ using System;
 using UnityEngine;
 using TMPro;
 
-public class DownloadOption : MonoBehaviour
+public class UIControl : MonoBehaviour
 {
     [SerializeField] private TMP_Dropdown _bootSelection;
 
     public static event Action AllAtOnce;
     public static event Action OneByOne;
     public static event Action WhenImageReady;
+    public static event Action OnLoad;
+    public static event Action OnCancel;
 
     private void Start()
     {
@@ -32,4 +34,16 @@ public class DownloadOption : MonoBehaviour
                 break;
         }
     }
+
+    public void ButtonLoad()
+    {
+        OnLoad?.Invoke();
+    }
+    
+    public void ButtonCancel()
+    {
+        OnCancel?.Invoke();
+    }
+    
+    
 }
