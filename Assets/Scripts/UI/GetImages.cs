@@ -1,40 +1,45 @@
+using System;
 using UnityEngine.Networking;
 using UnityEngine;
 using UnityEngine.UI;
 using Scripts.Network;
 using System.Threading.Tasks;
- 
-public class GetImages : MonoBehaviour
-{
-    public RawImage Texture;
-    private Texture2D _getTexture;
-    void Start()
-    {
-        GetTexture();
-    }
-    public async Task<Texture2D> GetTexture()
-    {
-        var request = UnityWebRequestTexture.GetTexture(AddressImages.AddressImag);
-        var call = request.SendWebRequest();
-        while (!call.isDone)
-        {
-            await Task.Yield();
-        }
-        if (request.result != UnityWebRequest.Result.Success)
-        {
-            Debug.Log(request.error);
-        }
-        else
-        {
-            var texture = DownloadHandlerTexture.GetContent(request);
-            _getTexture = texture;
-        }
-        //Texture.texture = _getTexture;
-        return _getTexture;
-    }
 
-    private void TextureSSS()
+namespace Scripts.UI
+{
+    public class GetImages : MonoBehaviour
     {
-        Texture = GetImages.GetTexture();
+        [SerializeField] private int _index;
+        [SerializeField] private RawImage _texture;
+        private Texture2D _getTexture;
+
+        public static event Action<int> EndGetImage;
+        private void Start()
+        {
+            RequestGetTexture();
+        }
+
+        public async Task RequestGetTexture()
+        {
+            var request = UnityWebRequestTexture.GetTexture(AddressImages.AddressImag);
+            var call = request.SendWebRequest();
+            while (!call.isDone)
+            {
+                await Task.Yield();
+            }
+
+            if (request.result != UnityWebRequest.Result.Success)
+            {
+                Debug.Log(request.error);
+            }
+            else
+            {
+                var texture = DownloadHandlerTexture.GetContent(request);
+                _getTexture = texture;
+            }
+            _texture.texture = _getTexture;
+            await Task.Yield();
+            EndGetImage?.Invoke(_index);
+        }
     }
 }
