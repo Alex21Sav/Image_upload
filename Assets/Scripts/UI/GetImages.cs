@@ -12,6 +12,7 @@ namespace Scripts.UI
         [SerializeField] private int _index;
         [SerializeField] private RawImage _texture;
         [SerializeField] private GameObject _card;
+        [SerializeField] private CardAnimation _animation;
         private Texture2D _getTexture;
 
         public static event Action<int> EndGetImage;
@@ -55,6 +56,8 @@ namespace Scripts.UI
         public void ActiveCard()
         {
             _card.SetActive(true);
+            _animation.StartAnimatiom();
+            
         }
     }
 }

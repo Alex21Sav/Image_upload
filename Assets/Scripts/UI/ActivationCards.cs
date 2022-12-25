@@ -73,6 +73,8 @@ public class ActivationCards : MonoBehaviour
 
     private void OnLoadCards()
     {
+        _sumIndexCards = 0;
+        _contentCards.SetActive(false);
         switch (_type)
         {
             case UIControl.LoadTypes.AllAtOnce:
