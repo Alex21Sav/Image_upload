@@ -12,6 +12,8 @@ public class UIControl : MonoBehaviour
     public static event Action OnLoad;
     public static event Action OnCancel;
 
+    public static event Action<LoadTypes> LoadType; 
+
     private void Start()
     {
         DropdownChoic(0);
@@ -21,29 +23,33 @@ public class UIControl : MonoBehaviour
         switch (num)
         {
             case 0:
-                AllAtOnce?.Invoke();
+                LoadType?.Invoke(LoadTypes.AllAtOnce);
                 Debug.Log("1");
                 break;
             case 1:
-                OneByOne?.Invoke();
+                LoadType?.Invoke(LoadTypes.OneByOne);
                 Debug.Log("2");
                 break;
             case 2:
-                WhenImageReady?.Invoke();
+                LoadType?.Invoke(LoadTypes.WhenImageReady);
                 Debug.Log("3");
                 break;
         }
     }
-
     public void ButtonLoad()
     {
         OnLoad?.Invoke();
     }
-    
     public void ButtonCancel()
     {
         OnCancel?.Invoke();
     }
     
-    
+    public enum LoadTypes
+    {
+        AllAtOnce,
+        OneByOne,
+        WhenImageReady
+    }
+
 }
