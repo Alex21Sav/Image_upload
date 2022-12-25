@@ -11,9 +11,9 @@ public class UIControl : MonoBehaviour
 
     private void Start()
     {
-        DropdownChoic(0);
+        DropdownChoice(0);
     }
-    public void DropdownChoic(int num)
+    public void DropdownChoice(int num)
     {
         switch (num)
         {
@@ -36,7 +36,6 @@ public class UIControl : MonoBehaviour
     {
         OnCancel?.Invoke();
     }
-    
     public enum LoadTypes
     {
         AllAtOnce,

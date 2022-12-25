@@ -140,7 +140,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 820536126}
         m_TargetAssemblyTypeName: DownloadOption, Assembly-CSharp
-        m_MethodName: DropdownChoic
+        m_MethodName: DropdownChoice
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
