@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using Scripts.Network;
 using System.Threading.Tasks;
 
-namespace Scripts.UI
+namespace Scripts
 {
     public class GetImages : MonoBehaviour
     {
@@ -16,11 +16,6 @@ namespace Scripts.UI
         private Texture2D _getTexture;
 
         public static event Action<int> EndGetImage;
-        // private void Start()
-        // {
-        //     RequestGetTexture();
-        // }
-
         private void OnEnable()
         {
             RequestGetTexture();
@@ -52,12 +47,10 @@ namespace Scripts.UI
             await Task.Yield();
             EndGetImage?.Invoke(_index);
         }
-
         public void ActiveCard()
         {
             _card.SetActive(true);
             _animation.StartAnimatiom();
-            
         }
     }
 }

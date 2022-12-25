@@ -1,8 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
-using Scripts.UI;
+using Scripts;
 
 public class ActivationCards : MonoBehaviour
 {
@@ -62,7 +61,6 @@ public class ActivationCards : MonoBehaviour
             {
                 _sumIndexCards = 0;
             }
-     
         }
     }
     private void ChoicTypes(UIControl.LoadTypes loadTypes)
@@ -70,7 +68,6 @@ public class ActivationCards : MonoBehaviour
         OnCancelLoad();
         _type = loadTypes;
     }
-
     private void OnLoadCards()
     {
         _sumIndexCards = 0;
@@ -95,8 +92,6 @@ public class ActivationCards : MonoBehaviour
         }
         _contentCards.SetActive(true);
     }
-    
-    
     private void OnCancelLoad()
     {
         _contentCards.SetActive(false);
@@ -105,5 +100,4 @@ public class ActivationCards : MonoBehaviour
         _whenImageReady = false;
         _sumIndexCards = 0;
     }
-
 }
