@@ -11,12 +11,23 @@ namespace Scripts.UI
     {
         [SerializeField] private int _index;
         [SerializeField] private RawImage _texture;
+        [SerializeField] private GameObject _card;
         private Texture2D _getTexture;
 
         public static event Action<int> EndGetImage;
-        private void Start()
+        // private void Start()
+        // {
+        //     RequestGetTexture();
+        // }
+
+        private void OnEnable()
         {
             RequestGetTexture();
+        }
+
+        private void OnDisable()
+        {
+            _card.SetActive(false);
         }
 
         public async Task RequestGetTexture()
@@ -27,7 +38,6 @@ namespace Scripts.UI
             {
                 await Task.Yield();
             }
-
             if (request.result != UnityWebRequest.Result.Success)
             {
                 Debug.Log(request.error);
@@ -40,6 +50,11 @@ namespace Scripts.UI
             _texture.texture = _getTexture;
             await Task.Yield();
             EndGetImage?.Invoke(_index);
+        }
+
+        public void ActiveCard()
+        {
+            _card.SetActive(true);
         }
     }
 }
